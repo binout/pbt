@@ -1,0 +1,22 @@
+= Property Based Testing
+
+== Use cases
+
+=== Pokemon
+
+* has a name
+* has PC (>0)
+* a type : FIRE, WATER, ELECTRIC, PLANT
+
+=== Effective Rule
+
+* WATER > FIRE
+* FIRE > PLANT
+* PLANT > ELECTRIC
+* ELECTRIC > WATER
+
+=== Fight Rule
+
+* You win if PC is greater
+* If type is more effective, PC is doubled
+* In case of a tie, attacker wins
