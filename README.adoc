@@ -5,7 +5,7 @@
 === Pokemon
 
 * has a name
-* has PC (>0)
+* has PC between 0 and 3000
 * a type : FIRE, WATER, ELECTRIC, PLANT
 
 === Effective Rule
