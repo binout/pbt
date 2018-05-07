@@ -36,11 +36,14 @@ public class Pokemon {
         return this.type == another.type;
     }
 
+    public boolean isEffectiveAgainst(Pokemon another) {
+        return another.type.equals(this.type.effectiveType());
+    }
+
     public Pokemon fights(Pokemon another) {
-        if (another.pc > this.pc) {
-            return another;
-        }
-        return this;
+        var pc = isEffectiveAgainst(another) ? this.pc * 2 : this.pc;
+        var anotherPc = another.isEffectiveAgainst(this) ? another.pc * 2 : another.pc;
+        return anotherPc > pc ? another : this;
     }
 
     @Override
@@ -54,5 +57,15 @@ public class Pokemon {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Pokemon{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", type=" + type +
+                ", pc=" + pc +
+                '}';
     }
 }
