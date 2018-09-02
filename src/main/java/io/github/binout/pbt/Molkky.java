@@ -35,6 +35,9 @@ public interface Molkky {
         public int _throw(Set<Pin> pins) {
             Iterator<Pin> iterator = pins.iterator();
             if (iterator.hasNext()) {
+                if (pins.size() > 1) {
+                    return pins.size();
+                }
                 return iterator.next().value();
             } else {
                 return 0;

@@ -20,6 +20,8 @@ import io.github.binout.pbt.Molkky.Score;
 import net.jqwik.api.Example;
 import net.jqwik.api.ForAll;
 import net.jqwik.api.Property;
+import net.jqwik.api.constraints.Size;
+import net.jqwik.properties.Assumptions;
 import org.assertj.core.api.WithAssertions;
 import org.junit.jupiter.api.Test;
 
@@ -57,6 +59,16 @@ class MolkkyTest implements WithAssertions {
     @Property
     void should_add_pin_value_when_one_pin(@ForAll Pin pin) {
         assertThat(new Score()._throw(Set.of(pin))).isEqualTo(pin.value());
+    }
+
+    @Example
+    void should_add_6_when_6_pins() {
+        assertThat(new Score()._throw(Set.of(Pin._4, Pin._2, Pin._3, Pin._6, Pin._7, Pin._8))).isEqualTo(6);
+    }
+
+    @Property
+    void should_add_pin_count_when_more_than_one_pin(@ForAll @Size(min = 2, max= 12) Set<Pin> pins) {
+        assertThat(new Score()._throw(pins)).isEqualTo(pins.size());
     }
 
 }
