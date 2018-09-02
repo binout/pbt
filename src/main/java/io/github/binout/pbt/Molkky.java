@@ -15,6 +15,7 @@
  */
 package io.github.binout.pbt;
 
+import java.util.Iterator;
 import java.util.Set;
 
 public interface Molkky {
@@ -27,10 +28,17 @@ public interface Molkky {
         }
     }
 
+    Set<Pin> WHITE = Set.of();
+
     class Score {
 
         public int _throw(Set<Pin> pins) {
-            return 0;
+            Iterator<Pin> iterator = pins.iterator();
+            if (iterator.hasNext()) {
+                return iterator.next().value();
+            } else {
+                return 0;
+            }
         }
 
         public int value() {

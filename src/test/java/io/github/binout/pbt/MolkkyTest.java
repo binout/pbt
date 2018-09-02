@@ -15,14 +15,48 @@
  */
 package io.github.binout.pbt;
 
+import io.github.binout.pbt.Molkky.Pin;
+import io.github.binout.pbt.Molkky.Score;
+import net.jqwik.api.Example;
+import net.jqwik.api.ForAll;
+import net.jqwik.api.Property;
 import org.assertj.core.api.WithAssertions;
 import org.junit.jupiter.api.Test;
+
+import java.util.Set;
+
+import static io.github.binout.pbt.Molkky.WHITE;
 
 class MolkkyTest implements WithAssertions {
 
     @Test
     void should_start_from_zero() {
-        assertThat(new Molkky.Score().value()).isZero();
+        assertThat(new Score().value()).isZero();
+    }
+
+    @Test
+    void should_stay_at_zero_when_white_throw() {
+        assertThat(new Score()._throw(WHITE)).isZero();
+    }
+
+    @Example
+    void should_add_5_when_one_pin_5() {
+        assertThat(new Score()._throw(Set.of(Pin._5))).isEqualTo(5);
+    }
+
+    @Example
+    void should_add_6_when_one_pin_6() {
+        assertThat(new Score()._throw(Set.of(Pin._6))).isEqualTo(6);
+    }
+
+    @Example
+    void should_add_7_when_one_pin_7() {
+        assertThat(new Score()._throw(Set.of(Pin._7))).isEqualTo(7);
+    }
+
+    @Property
+    void should_add_pin_value_when_one_pin(@ForAll Pin pin) {
+        assertThat(new Score()._throw(Set.of(pin))).isEqualTo(pin.value());
     }
 
 }
