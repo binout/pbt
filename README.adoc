@@ -1,22 +1,24 @@
 = Property Based Testing
 
-== Use cases
+== Molkky
 
-=== Pokemon
+=== Quilles
 
-* has a name
-* has PC between 0 and 3000
-* a type : FIRE, WATER, ELECTRIC, PLANT
+Le principe du jeu est de faire tomber des quilles en bois à l’aide d’un lanceur appelé Mölkky.
+Les quilles sont marquées de 1 à 12
 
-=== Effective Rule
+=== Calcul du score
 
-* WATER > FIRE
-* FIRE > PLANT
-* PLANT > ELECTRIC
-* ELECTRIC > WATER
+– si un joueur fait tomber plusieurs quilles, il gagne autant de points que de quilles abattues.
 
-=== Fight Rule
+– si un joueur fait tomber une seule quille, il gagne autant de points que le nombre inscrit dessus.
 
-* You win if PC is greater
-* If type is more effective, PC is doubled
-* In case of a tie, attacker wins
+Si une équipe dépasse 50, elle retombe à 25.
+
+=== Fin de partie
+
+Premier qui arrive à totaliser exactement 50 points.
+
+=== Élimination
+
+Le joueur qui fait trois blancs consécutifs (trois lancers au cours duquel aucun point n’est marqué,) est éliminé.
