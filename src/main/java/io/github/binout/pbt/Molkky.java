@@ -30,22 +30,25 @@ public interface Molkky {
 
     Set<Pin> WHITE = Set.of();
 
-    class Score {
+    class Game {
 
-        public int _throw(Set<Pin> pins) {
-            Iterator<Pin> iterator = pins.iterator();
-            if (iterator.hasNext()) {
-                if (pins.size() > 1) {
-                    return pins.size();
-                }
-                return iterator.next().value();
+        private int score = 0;
+
+        public Game _throw(Set<Pin> pins) {
+            score += computeThrow(pins);
+            return this;
+        }
+
+        private int computeThrow(Set<Pin> pins) {
+            if (pins.size() == 1) {
+                return pins.iterator().next().value();
             } else {
-                return 0;
+                return pins.size();
             }
         }
 
-        public int value() {
-            return 0;
+        public int score() {
+            return score;
         }
     }
 }
