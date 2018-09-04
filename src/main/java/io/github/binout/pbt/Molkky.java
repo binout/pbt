@@ -33,9 +33,16 @@ public interface Molkky {
     class Game {
 
         private int score = 0;
+        private boolean isWinning = false;
 
         public Game _throw(Set<Pin> pins) {
             score += computeThrow(pins);
+            if (score == 50) {
+                isWinning = true;
+            }
+            if (score > 50) {
+                score = 25;
+            }
             return this;
         }
 
@@ -49,6 +56,10 @@ public interface Molkky {
 
         public int score() {
             return score;
+        }
+
+        public boolean isWinning() {
+            return isWinning;
         }
     }
 }
