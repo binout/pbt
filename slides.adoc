@@ -11,7 +11,7 @@
 
 image::images/{conf}.jpg[float="right"]
 
-== Me
+== Benoit Prioux
 
 icon:twitter[] @binout +
 icon:github[] https://github.com/binout
@@ -20,89 +20,86 @@ image::images/lectra.png[]
 
 image::images/lectra-versalis.jpg[versalis, 800]
 
-== Tests Pyramid
+== Pyramide des tests
 
 .https://martinfowler.com/bliki/TestPyramid.html
 image::images/test-pyramid.png[]
 
-== Test Driven Development
+== Développement piloté par les tests
 
 .https://www.supinfo.com/articles/single/3034-test-driven-development
 image::images/TDD.png[]
 
-== Write a test that fails
+== Inductif vs Deductif
 
-* A partir de la spécification
-* En trouvant des cas d'utilisation (exemples)
-* Les cas au limite
-* Mais c'est pas toujours facile ...
+.https://twitter.com/lilobase/status/769921361141784576
+image::images/tddpbt.png[]
 
-== Property Based Testing
+== Tests par propriétés
 
 [quote]
-Property-based tests make statements about the output of your code based on the input, and these statements are verified for many different possible inputs.
+Exprimer des propriétés et laisser une suite de tests les vérifier pour un grand nombre d'entrée.
 
-== Domain Driven Design
+== Propriété 
 
-Recherche d'invariant dans le domaine métier
+.Ensemble des entiers naturels
+[quote]
+∀a ∈ ℕ a ≥ 0
 
-Permet d'explorer le domaine métier
+.Concaténation de string
+[quote]
+(a + b).length = a.length + b.length
 
-== There and Back Again
+== Aller-Retour
 
 [quote]
-Serialize + De-serialize = same
+Serialiser + Déserialiser = idem
 
 image::images/serialize.png[]
 
-== Some things never change
+== Certaines choses ne changent jamais
 
 [quote]
-List.sort = same size, same content
+List.sort( ) = même taille, mêmes éléments
 
 image::images/sort.png[]
 
-== Hard to compute, easy to verify
+== Difficile à calculer, facile à vérifier
 
 [quote]
-Find itinerary
+Trouver un chemin
 
 image::images/itinerary.png[]
 
 
-== Tools
+== Outils
+
+image::images/data.png[float=right]
 
 * Intégration avec un runner de test
 * Besoin de générer des données aléatoires
-* Réduction des valeurs possibles en entrée
 * Permet de créer ses propres générateurs
+* Réduction des valeurs possibles en entrée
 
-== Libraries
+== Librairies
 
-* Haskell : Quickcheck
-* Scala : ScalaTest
-* Kotlin : kotlintest
+image::images/haskell.png[float=right]
+
+* Haskell : `Quickcheck`
+* Scala : `ScalaCheck`
+* Kotlin : `KotlinTest`
 * Java : 
-** Junit-quickcheck pour Junit 4
-** jqwik pour Junit 5
+** `JUnit-Quickcheck` pour Junit 4
+** `Jqwik` pour Junit 5
 
-
-== Demo : jqwik
+== Démo : jqwik
 
 image::images/molkky.png[]
 
-== Des vérités
-
-Propriété vérifiée avec un outil doit être plus simple que le code testé
-
-Mockito.any() => PBT
-
-PBT, comme une assurance
-
-TDD vs PBT , non !
-
-TDD AND PBT FTW !
-
 == Pour aller plus loin
 
+[quote]
+Propriété vérifiée avec un outil doit être plus simple que le code testé
+
+.Université Devoxx 2016 (Cyrille Martraire - Romeu MOURA)
 video::O-LWbSUaEQU[youtube]
