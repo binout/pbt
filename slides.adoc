@@ -96,11 +96,12 @@ image::images/haskell.png[float=right]
 
 image::images/molkky.png[]
 
-== Pour aller plus loin
+== A vous de tester !
 
 [quote]
 Propriété vérifiée avec un outil doit être plus simple que le code testé
 
-.Université Devoxx 2016 (Cyrille Martraire - Romeu MOURA)
+* Pour aller plus loin :
+** Université Devoxx 2016 (Cyrille Martraire - Romeu MOURA)
 
 video::O-LWbSUaEQU[youtube]
