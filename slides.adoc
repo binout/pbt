@@ -115,10 +115,13 @@ image::images/new-pyramid.png[]
 
 == A vous de tester !
 
+icon:github[] https://github.com/binout/pbt
+
+.Conseil
 [quote]
 Propriété vérifiée avec un outil doit être plus simple que le code testé
 
-* Pour aller plus loin :
+.Pour aller plus loin
 ** Université Devoxx 2016 (Cyrille Martraire - Romeu MOURA)
 
 video::O-LWbSUaEQU[youtube]
