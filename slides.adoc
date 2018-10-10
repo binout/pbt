@@ -50,6 +50,19 @@ Exprimer des propriétés et laisser une suite de tests les vérifier pour un gr
 [quote]
 (a + b).length = a.length + b.length
 
+[canvas-image=images/property-finding.png]
+== Propery finding
+
+[.canvas-caption, position=top-left]
+Comment trouver des propriétés ?
+
+== Règles métiers
+
+[quote]
+Trouver les invariants dans votre domaine métier 
+
+image::images/business-rules.png[]
+
 == Aller-Retour
 
 [quote]
