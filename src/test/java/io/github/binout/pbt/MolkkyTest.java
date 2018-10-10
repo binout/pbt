@@ -37,23 +37,23 @@ class MolkkyTest implements WithAssertions {
     class ThrowOfOnePin {
 
         @Example
-        void should_add_5_when_one_pin_5() {
-            assertThat(new Throw(of(Pin._5)).point()).isEqualTo(5);
+        void given_one_pin_5_points_should_be_5() {
+            assertThat(new Throw(of(Pin._5)).points()).isEqualTo(5);
         }
 
         @Example
-        void should_add_6_when_one_pin_6() {
-            assertThat(new Throw(of(Pin._6)).point()).isEqualTo(6);
+        void given_one_pin_6_points_should_be_6() {
+            assertThat(new Throw(of(Pin._6)).points()).isEqualTo(6);
         }
 
         @Example
-        void should_add_7_when_one_pin_7() {
-            assertThat(new Throw(of(Pin._7)).point()).isEqualTo(7);
+        void given_one_pin_7_points_should_be_7() {
+            assertThat(new Throw(of(Pin._7)).points()).isEqualTo(7);
         }
 
         @Property
-        void should_add_pin_value_when_one_pin(@ForAll Pin pin) {
-            assertThat(new Throw(of(pin)).point()).isEqualTo(pin.value());
+        void given_one_pin_points_should_be_pin_value(@ForAll Pin pin) {
+            assertThat(new Throw(of(pin)).points()).isEqualTo(pin.value());
         }
     }
 
@@ -61,23 +61,23 @@ class MolkkyTest implements WithAssertions {
     class ThrowOfMoreThanOnePin {
 
         @Example
-        void should_add_6_when_6_pins() {
-            assertThat(new Throw(of(Pin._4, Pin._2, Pin._3, Pin._6, Pin._7, Pin._8)).point()).isEqualTo(6);
+        void given_6_pins_points_should_be_6() {
+            assertThat(new Throw(of(Pin._4, Pin._2, Pin._3, Pin._6, Pin._7, Pin._8)).points()).isEqualTo(6);
         }
 
         @Property
-        void should_add_pin_count_when_more_than_one_pin(@ForAll @Size(min = 2, max = 12) Set<Pin> pins) {
-            assertThat(new Throw(pins).point()).isEqualTo(pins.size());
+        void given_more_than_one_pins_points_should_be_equal_to_number_of_pin(@ForAll @Size(min = 2, max = 12) Set<Pin> pins) {
+            assertThat(new Throw(pins).points()).isEqualTo(pins.size());
         }
     }
 
     @Test
-    void should_start_from_zero() {
+    void score_should_start_from_zero() {
         assertThat(new Game().score()).isZero();
     }
 
     @Test
-    void should_not_win_at_start() {
+    void game_should_not_be_winning_at_start() {
         assertThat(new Game().isWinning()).isFalse();
     }
 
@@ -89,7 +89,7 @@ class MolkkyTest implements WithAssertions {
     }
 
     @Group
-    class AddEachThrowToScore {
+    class GameScore {
 
         @Example
         void should_stay_at_zero_when_white_throw() {
@@ -98,7 +98,7 @@ class MolkkyTest implements WithAssertions {
 
 
         @Example
-        void should_set_score_to_12_when_pin6_and_pin6() {
+        void should_be_12_when_pin6_and_pin6() {
             var game = new Game()
                     ._throw(new Throw(of(Pin._6)))
                     ._throw(new Throw(of(Pin._6)));
@@ -106,7 +106,7 @@ class MolkkyTest implements WithAssertions {
         }
 
         @Example
-        void should_set_score_to_18_when_pin6_and_pin6_and_pin6() {
+        void should_be_18_when_pin6_and_pin6_and_pin6() {
             var game = new Game()
                     ._throw(new Throw(of(Pin._6)))
                     ._throw(new Throw(of(Pin._6)))
@@ -115,8 +115,8 @@ class MolkkyTest implements WithAssertions {
         }
 
         @Property
-        void should_add_each_throw_to_score(@ForAll @IntRange(min = 1, max = 4) int nbThrows, @ForAll Throw aThrow) {
-            var scoreOfAThrow = aThrow.point();
+        void should_add_each_throw_points(@ForAll @IntRange(min = 1, max = 4) int nbThrows, @ForAll Throw aThrow) {
+            var scoreOfAThrow = aThrow.points();
             var game = new Game();
             IntStream.range(1, nbThrows+1).forEach(i -> game._throw(aThrow));
             assertThat(game.score()).isEqualTo(scoreOfAThrow * nbThrows);
@@ -124,7 +124,7 @@ class MolkkyTest implements WithAssertions {
     }
 
     @Test
-    void should_reset_to_25_if_4_times_pin12_and_pin3() {
+    void score_should_reset_to_25_if_4_times_pin12_and_pin3() {
         var game = new Game()
                 ._throw(new Throw(of(Pin._12)))
                 ._throw(new Throw(of(Pin._12)))
@@ -142,7 +142,7 @@ class MolkkyTest implements WithAssertions {
     }
 
     @Test
-    void should_win_at_50_example() {
+    void game_should_be_winning_at_50_example() {
         var game = new Game()
                 ._throw(new Throw(of(Pin._12)))
                 ._throw(new Throw(of(Pin._12)))

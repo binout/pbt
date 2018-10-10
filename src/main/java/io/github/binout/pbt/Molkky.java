@@ -15,7 +15,6 @@
  */
 package io.github.binout.pbt;
 
-import java.util.Iterator;
 import java.util.Set;
 
 public interface Molkky {
@@ -39,7 +38,7 @@ public interface Molkky {
             this.pins = pins;
         }
 
-        public int point() {
+        public int points() {
             if (pins.size() == 1) {
                 return pins.iterator().next().value();
             } else {
@@ -54,7 +53,7 @@ public interface Molkky {
         private boolean isWinning = false;
 
         public Game _throw(Throw aThrow) {
-            score += aThrow.point();
+            score += aThrow.points();
             if (score == 50) {
                 isWinning = true;
             }
