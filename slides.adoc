@@ -109,6 +109,10 @@ image::images/haskell.png[float=right]
 
 image::images/molkky.png[]
 
+== Nouvelle pyramide des tests
+
+image::images/new-pyramid.png[]
+
 == A vous de tester !
 
 [quote]
