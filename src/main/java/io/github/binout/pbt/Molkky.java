@@ -28,15 +28,33 @@ public interface Molkky {
         }
     }
 
-    Set<Pin> WHITE = Set.of();
+
+    class Throw {
+
+        public static Throw WHITE = new Throw(Set.of());
+
+        private final Set<Pin> pins;
+
+        public Throw(Set<Pin> pins) {
+            this.pins = pins;
+        }
+
+        public int point() {
+            if (pins.size() == 1) {
+                return pins.iterator().next().value();
+            } else {
+                return pins.size();
+            }
+        }
+    }
 
     class Game {
 
         private int score = 0;
         private boolean isWinning = false;
 
-        public Game _throw(Set<Pin> pins) {
-            score += computeThrow(pins);
+        public Game _throw(Throw aThrow) {
+            score += aThrow.point();
             if (score == 50) {
                 isWinning = true;
             }
@@ -46,13 +64,6 @@ public interface Molkky {
             return this;
         }
 
-        private int computeThrow(Set<Pin> pins) {
-            if (pins.size() == 1) {
-                return pins.iterator().next().value();
-            } else {
-                return pins.size();
-            }
-        }
 
         public int score() {
             return score;
