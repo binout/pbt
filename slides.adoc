@@ -116,4 +116,5 @@ image::images/new-pyramid.png[]
 .Pour aller plus loin
 ** icon:github[] https://github.com/binout/pbt
 ** 🎦 Université Devoxx 2016 (Cyrille Martraire - Romeu MOURA)
+
 video::O-LWbSUaEQU[youtube]
