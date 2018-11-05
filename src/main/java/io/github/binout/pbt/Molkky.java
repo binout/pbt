@@ -39,11 +39,7 @@ public interface Molkky {
         }
 
         public int points() {
-            if (pins.size() == 1) {
-                return pins.iterator().next().value();
-            } else {
-                return pins.size();
-            }
+           return 0;
         }
     }
 
@@ -53,13 +49,6 @@ public interface Molkky {
         private boolean isWinning = false;
 
         public Game _throw(Throw aThrow) {
-            score += aThrow.points();
-            if (score == 50) {
-                isWinning = true;
-            }
-            if (score > 50) {
-                score = 25;
-            }
             return this;
         }
 

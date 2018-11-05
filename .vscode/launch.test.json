@@ -1,0 +1,30 @@
+{
+    "run": {
+        "default": "",
+        "items": [
+            {
+                "name": "pbt-kt",
+                "projectName": "pbt-kt",
+                "workingDirectory": "/Users/benoit/Coding/conferences/pbt",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    },
+    "debug": {
+        "default": "",
+        "items": [
+            {
+                "name": "pbt-kt",
+                "projectName": "pbt-kt",
+                "workingDirectory": "/Users/benoit/Coding/conferences/pbt",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    }
+}
