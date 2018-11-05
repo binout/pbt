@@ -81,13 +81,6 @@ class MolkkyTest implements WithAssertions {
         assertThat(new Game().isWinning()).isFalse();
     }
 
-    @Provide
-    Arbitrary<Throw> aThrow() {
-        return Arbitraries.integers().between(1, 12).set().ofMaxSize(12)
-                .map(s -> s.stream().map(i -> Pin.valueOf("_" + i)).collect(Collectors.toSet()))
-                .map(Throw::new);
-    }
-
     @Group
     class GameScore {
 
@@ -121,8 +114,8 @@ class MolkkyTest implements WithAssertions {
             IntStream.range(1, nbThrows+1).forEach(i -> game._throw(aThrow));
             assertThat(game.score()).isEqualTo(scoreOfAThrow * nbThrows);
         }
-    }
 
+    }
     @Test
     void score_should_reset_to_25_if_4_times_pin12_and_pin3() {
         var game = new Game()
@@ -132,13 +125,6 @@ class MolkkyTest implements WithAssertions {
                 ._throw(new Throw(of(Pin._12)))
                 ._throw(new Throw(of(Pin._3)));
         assertThat(game.score()).isEqualTo(25);
-    }
-
-    @Property
-    void score_is_always_between_0_and_50(@ForAll @IntRange(min = 1, max = 100) int nbThrows, @ForAll Throw aThrow) {
-        var game = new Game();
-        IntStream.range(1, nbThrows+1).forEach(i -> game._throw(aThrow));
-        assertThat(game.score()).isBetween(0, 50);
     }
 
     @Test
@@ -151,6 +137,20 @@ class MolkkyTest implements WithAssertions {
                 ._throw(new Throw(of(Pin._2)));
         assertThat(game.score()).isEqualTo(50);
         assertThat(game.isWinning()).isTrue();
+    }
+
+    @Provide
+    Arbitrary<Throw> aThrow() {
+        return Arbitraries.integers().between(1, 12).set().ofMaxSize(12)
+                .map(s -> s.stream().map(i -> Pin.valueOf("_" + i)).collect(Collectors.toSet()))
+                .map(Throw::new);
+    }
+
+    @Property
+    void score_is_always_between_0_and_50(@ForAll @IntRange(min = 1, max = 100) int nbThrows, @ForAll Throw aThrow) {
+        var game = new Game();
+        IntStream.range(1, nbThrows+1).forEach(i -> game._throw(aThrow));
+        assertThat(game.score()).isBetween(0, 50);
     }
 
 }
