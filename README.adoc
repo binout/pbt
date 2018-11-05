@@ -22,3 +22,8 @@ Premier qui arrive à totaliser exactement 50 points.
 === Élimination
 
 Le joueur qui fait trois blancs consécutifs (trois lancers au cours duquel aucun point n’est marqué,) est éliminé.
+
+== Live Coding
+
+.https://youtu.be/7K24zSetV8Q
+video::7K24zSetV8Q[youtube]
