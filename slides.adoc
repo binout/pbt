@@ -38,7 +38,7 @@ image::images/tddpbt.png[]
 == Tests par propriétés
 
 [quote]
-Exprimer des propriétés et laisser une suite de tests les vérifier pour un grand nombre d'entrée.
+Exprimer des propriétés et laisser une suite de tests les vérifier pour un grand nombre d'entrées.
 
 == Propriété 
 
@@ -66,7 +66,7 @@ image::images/business-rules.png[]
 == Aller-Retour
 
 [quote]
-Serialiser + Déserialiser = idem
+Sérialiser + Déserialiser = idem
 
 image::images/serialize.png[]
 
@@ -91,7 +91,7 @@ image::images/data.png[float=right]
 
 * Intégration avec un runner de test
 * Besoin de générer des données aléatoires
-* Permet de créer ses propres générateurs
+* Capacité à créer ses propres générateurs
 * Réduction des valeurs possibles en entrée
 
 == Librairies
