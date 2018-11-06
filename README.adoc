@@ -25,5 +25,5 @@ Le joueur qui fait trois blancs consécutifs (trois lancers au cours duquel aucu
 
 == Live Coding
 
-.https://youtu.be/7K24zSetV8Q
-video::7K24zSetV8Q[youtube]
+.https://youtu.be/wJtU084fndY
+video::wJtU084fndY[youtube]
