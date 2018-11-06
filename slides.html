@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta content="text/html; charset=" http-equiv="Content-Type">
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+<meta content="Asciidoctor 1.5.5" name="generator">
+<title>Property Based Testing : la vérité vraie !</title>
+<link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+<style>
+.conum { display: inline-block; color: white !important; background-color: #222222; -webkit-border-radius: 100px; border-radius: 100px; text-align: center; width: 1.2em; height: 1.2em; font-size: 0.9em; font-weight: bold; line-height: 1.2; font-family: Arial, sans-serif; font-style: normal; position: relative; top: -0.1em; }
+.conum * { color: white !important; }
+.conum + b { display: none; }
+.conum:after { content: attr(data-value); }
+.conum:not([data-value]):empty { display: none; }
+.colist table td:first-of-type { padding-right: 0.25em; }
+</style>
+<link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css" rel="stylesheet">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+<link href="deck.js/core/deck.core.css" rel="stylesheet">
+<link href="deck.js/extensions/scale/deck.scale.css" media="screen" rel="stylesheet">
+<link href="deck.js/extensions/goto/deck.goto.css" media="screen" rel="stylesheet">
+<link href="deck.js/extensions/navigation/deck.navigation.css" media="screen" rel="stylesheet">
+<link href="deck.js/extensions/status/deck.status.css" media="screen" rel="stylesheet">
+<link href="deck.js/themes/style/swiss.css" media="screen" rel="stylesheet">
+<link href="deck.js/themes/transition/fade.css" media="screen" rel="stylesheet">
+<link href="deck.js/core/print.css" media="print" rel="stylesheet">
+<script src="deck.js/modernizr.custom.js"></script>
+</head>
+<body class="article">
+<div class="deck-container">
+<section class="slide" id="title-slide">
+<h1>Property Based Testing : la vérité vraie !</h1>
+</section>
+<div id="preamble">
+<div class="sectionbody">
+<div class="imageblock" style="float: right">
+<div class="content">
+<img alt="bdxio" src="images/bdxio.jpg">
+</div>
+</div>
+</div>
+</div>
+<section class="slide" id="_benoit_prioux">
+<h2>Benoit Prioux</h2>
+<div class="paragraph"><p><span class="icon"><i class="icon-twitter"></i></span> @binout<br>
+<span class="icon"><i class="icon-github"></i></span> <a class="bare" href="https://github.com/binout">https://github.com/binout</a></p></div>
+<div class="imageblock">
+<div class="content">
+<img alt="lectra" src="images/lectra.png">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img alt="versalis" src="images/lectra-versalis.jpg" width="800">
+</div>
+</div>
+</section>
+<section class="slide" id="_développement_piloté_par_les_tests">
+<h2>Développement piloté par les tests</h2>
+<div class="imageblock">
+<div class="content">
+<img alt="TDD" src="images/TDD.png">
+</div>
+<div class="title">Figure 1. <a class="bare" href="https://www.supinfo.com/articles/single/3034-test-driven-development">https://www.supinfo.com/articles/single/3034-test-driven-development</a></div>
+</div>
+</section>
+<section class="slide" id="_inductif_vs_deductif">
+<h2>Inductif vs Deductif</h2>
+<div class="imageblock">
+<div class="content">
+<img alt="tddpbt" src="images/tddpbt.png">
+</div>
+<div class="title">Figure 2. <a class="bare" href="https://twitter.com/lilobase/status/769921361141784576">https://twitter.com/lilobase/status/769921361141784576</a></div>
+</div>
+</section>
+<section class="slide" id="_tests_par_propriétés">
+<h2>Tests par propriétés</h2>
+<div class="quoteblock">
+<blockquote>
+Exprimer des propriétés et laisser une suite de tests les vérifier pour un grand nombre d&#8217;entrées.
+</blockquote>
+</div>
+</section>
+<section class="slide" id="_propriété">
+<h2>Propriété</h2>
+<div class="quoteblock">
+<div class="title">Ensemble des entiers naturels</div>
+<blockquote>
+∀a ∈ ℕ a ≥ 0
+</blockquote>
+</div>
+<div class="quoteblock">
+<div class="title">Concaténation de string</div>
+<blockquote>
+(a + b).length = a.length + b.length
+</blockquote>
+</div>
+</section>
+<section class="slide canvas-image" id="_propery_finding" style="background-image: url(images/property-finding.png)">
+<div class="paragraph canvas-caption"><p class="top-left">Comment trouver des propriétés ?</p></div>
+</section>
+<section class="slide" id="_règles_métiers">
+<h2>Règles métiers</h2>
+<div class="quoteblock">
+<blockquote>
+Trouver les invariants dans votre domaine métier
+</blockquote>
+</div>
+<div class="imageblock">
+<div class="content">
+<img alt="business rules" src="images/business-rules.png">
+</div>
+</div>
+</section>
+<section class="slide" id="_aller_retour">
+<h2>Aller-Retour</h2>
+<div class="quoteblock">
+<blockquote>
+Sérialiser + Déserialiser = idem
+</blockquote>
+</div>
+<div class="imageblock">
+<div class="content">
+<img alt="serialize" src="images/serialize.png">
+</div>
+</div>
+</section>
+<section class="slide" id="_certaines_choses_ne_changent_jamais">
+<h2>Certaines choses ne changent jamais</h2>
+<div class="quoteblock">
+<blockquote>
+List.sort( ) = même taille, mêmes éléments
+</blockquote>
+</div>
+<div class="imageblock">
+<div class="content">
+<img alt="sort" src="images/sort.png">
+</div>
+</div>
+</section>
+<section class="slide" id="_difficile_à_calculer_facile_à_vérifier">
+<h2>Difficile à calculer, facile à vérifier</h2>
+<div class="quoteblock">
+<blockquote>
+Trouver un chemin
+</blockquote>
+</div>
+<div class="imageblock">
+<div class="content">
+<img alt="itinerary" src="images/itinerary.png">
+</div>
+</div>
+</section>
+<section class="slide" id="_outils">
+<h2>Outils</h2>
+<div class="imageblock" style="float: right">
+<div class="content">
+<img alt="data" src="images/data.png">
+</div>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="ulist">
+<ul>
+<li>Intégration avec un runner de test</li>
+<li>Besoin de générer des données aléatoires</li>
+<li>Capacité à créer ses propres générateurs</li>
+<li>Réduction des valeurs possibles en entrée</li>
+</ul>
+</div>
+</blockquote>
+</div>
+</section>
+<section class="slide" id="_librairies">
+<h2>Librairies</h2>
+<div class="imageblock" style="float: right">
+<div class="content">
+<img alt="haskell" src="images/haskell.png">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>Haskell : <code>Quickcheck</code></li>
+<li>Scala : <code>ScalaCheck</code></li>
+<li>Kotlin : <code>KotlinTest</code></li>
+<li><p>
+Java :<div class="ulist">
+<ul>
+<li><code>JUnit-Quickcheck</code> pour Junit 4</li>
+<li><code>Jqwik</code> pour Junit 5</li>
+</ul>
+</div></p></li>
+</ul>
+</div>
+</section>
+<section class="slide" id="_démo_jqwik">
+<h2>Démo : jqwik</h2>
+<div class="imageblock">
+<div class="content">
+<img alt="molkky" src="images/molkky.png">
+</div>
+</div>
+</section>
+<section class="slide" id="_questions">
+<h2>Questions ?</h2>
+<div class="paragraph"><p><span class="icon"><i class="icon-github"></i></span> <a class="bare" href="https://github.com/binout/pbt">https://github.com/binout/pbt</a></p></div>
+<div class="ulist">
+<ul>
+<li>🖥 Slides</li>
+<li>☕️ Code</li>
+<li>🎦 Live Coding</li>
+</ul>
+</div>
+<div class="paragraph"><p><strong>Pour aller plus loin</strong></p></div>
+<div class="paragraph"><p>🎦 Université Devoxx 2016 (Cyrille Martraire - Romeu MOURA)</p></div>
+<div class="videoblock">
+<iframe allowfullscreen src="//www.youtube.com/embed/O-LWbSUaEQU?rel=0"></iframe>
+</div>
+</section>
+<div aria-role="navigation">
+<a class="deck-prev-link" href="#" title="Previous">&#8592;</a>
+<a class="deck-next-link" href="#" title="Next">&#8594;</a>
+</div>
+<p aria-role="status" class="deck-status">
+<span class="deck-status-current"></span>
+/
+<span class="deck-status-total"></span>
+</p>
+<form action="." class="goto-form" method="get">
+<label for="goto-slide">Go to Slide:</label>
+<input id="goto-slide" list="goto-datalist" name="slidenum" type="text">
+<datalist id="goto-data-list"></datalist>
+<input type="submit" value="Go">
+</form>
+</div>
+<script src="deck.js/jquery.min.js"></script>
+<script src="deck.js/core/deck.core.js"></script>
+<script src="deck.js/extensions/scale/deck.scale.js"></script>
+<script src="deck.js/extensions/goto/deck.goto.js"></script>
+<script src="deck.js/extensions/navigation/deck.navigation.js"></script>
+<script src="deck.js/extensions/status/deck.status.js"></script>
+<script>
+  (function($, deck, undefined) {
+    $.deck.defaults.keys['previous'] = [8, 33, 37, 39];
+    $.deck.defaults.keys['next'] = [13, 32, 34, 39];
+  
+    $.extend(true, $[deck].defaults, {
+        countNested: false
+    });
+  
+    $.deck('.slide');
+  })(jQuery, 'deck');
+</script>
+<style>
+  .slide.canvas-image {
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  display: -moz-box;
+  display: -webkit-box;
+  display: -ms-box;
+  display: box;
+  -moz-box-orient: vertical;
+  -webkit-box-orient: vertical;
+  -ms-box-orient: vertical;
+  box-orient: vertical;
+  -moz-box-align: start;
+  -webkit-box-align: start;
+  -ms-box-align: start;
+  box-align: start;
+  -moz-box-pack: start;
+  -webkit-box-pack: start;
+  -ms-box-pack: start;
+  box-pack: start;}
+  
+  .bottom-left {
+    left: 1%;
+    bottom: 20%; }
+  
+  .top-left {
+    left: 1%;
+    top: 20%; }
+  
+  .bottom-right {
+    right: 1%;
+    bottom: 20%; }
+  
+  .top-right {
+    right: 1%;
+    top: 20%; }
+  
+  .center-up {
+    right: 50%;
+    top: 1%;
+  }
+  
+  .center-down {
+    right: 50%;
+    bottom: 1%;
+  }
+  .canvas-image .canvas-caption p {
+    text-align: center;
+    padding-top: 0;
+    padding: 0;
+    -moz-transform: none;
+    -webkit-transform: none;
+    -o-transform: none;
+    -ms-transform: none;
+    transform: none;
+    display: inline;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.7);
+    font-weight: bold;
+    font-size: 58px;
+    -webkit-box-shadow: 2px 2px 2px #000;
+    -moz-box-shadow: 2px 2px 2px #000;
+    box-shadow: 2px 2px 2px #000;
+    padding: 1rem;
+    color: white; }
+  kbd.keyseq { color: #555555; }
+  kbd:not(.keyseq) {
+    display: inline-block;
+    color: #222222;
+    font-size: 0.7em;
+    line-height: 1.4;
+    background-color: #F7F7F7;
+    border: 1px solid #ccc;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 0 0 2px white inset;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 0 0 2px white inset;
+    margin: -0.15em 0.15em 0 0.15em;
+    padding: 0.2em 0.6em;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+  kbd kbd:first-child { margin-left: 0; }
+  kbd kbd:last-child { margin-right: 0; }
+</style>
+</body>
+</html>
