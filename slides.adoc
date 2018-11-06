@@ -20,10 +20,14 @@ image::images/lectra.png[]
 
 image::images/lectra-versalis.jpg[versalis, 800]
 
+////
+
 == Pyramide des tests
 
 .https://martinfowler.com/bliki/TestPyramid.html
 image::images/test-pyramid.png[]
+
+////
 
 == Développement piloté par les tests
 
@@ -89,10 +93,13 @@ image::images/itinerary.png[]
 
 image::images/data.png[float=right]
 
+[quote]
+____
 * Intégration avec un runner de test
 * Besoin de générer des données aléatoires
 * Permet de créer ses propres générateurs
 * Réduction des valeurs possibles en entrée
+____
 
 == Librairies
 
@@ -109,12 +116,21 @@ image::images/haskell.png[float=right]
 
 image::images/molkky.png[]
 
-== Conclusion
+== Questions ?
 
+////
 image::images/new-pyramid.png[]
+////
 
-.Pour aller plus loin
-** icon:github[] https://github.com/binout/pbt
-** 🎦 Université Devoxx 2016 (Cyrille Martraire - Romeu MOURA)
+icon:github[] https://github.com/binout/pbt
+
+* 🖥 Slides
+* ☕️ Code
+* 🎦 Live Coding
+
+
+*Pour aller plus loin*
+
+🎦 Université Devoxx 2016 (Cyrille Martraire - Romeu MOURA)
 
 video::O-LWbSUaEQU[youtube]
